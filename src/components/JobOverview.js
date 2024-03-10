@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import "./JobOverview.css"
 import { db } from "../firebase";
-import { getDoc, doc } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import jobBanner from './job-portal-banner.jpg'
 
@@ -10,7 +9,7 @@ export default function JobOverview() {
   const {jobId} = useParams();
   console.log(jobId)
   const [job, setJob] = useState("");
-  useEffect(() => {
+  
     const fetchData = async () => {
       const docRef = doc(db, "jobcollection", jobId);
       const docSnap = await getDoc(docRef);
@@ -22,15 +21,11 @@ export default function JobOverview() {
       setrequirements(tempreq)
     };
     fetchData();
-  }, []);
+   []);
     return (
         <div className="job-overview">
             
-              <div className="job-explain">
-                <img className="job-bg" alt="" src={jobBanner} />
-                <div className="job-logos">
-                  <img src={job.imageUrl} alt="" />
-                </div>
+             
 
                 <div className="job-explain-content">
                   <div className="job-title-wrapper">
@@ -57,10 +52,7 @@ export default function JobOverview() {
                       <div className="explain-title">Employee Type</div>
                       <div className="explain-subtitle">{job.jobType} Job</div>
                     </div>
-                    <div className="explain-contents">
-                      <div className="explain-title">Offer Salary</div>
-                      <div className="explain-subtitle">${job.salary} / Month</div>
-                    </div>
+                   
                   </div>
                   <div className="overview-text">
                     <div className="overview-text-header">Job Overview</div>
@@ -68,13 +60,7 @@ export default function JobOverview() {
                       {job.description}
                     </div>
                   </div>
-                  <div className="overview-text">
-                    <div className="overview-text-header">Requirements</div>
-                    {requirements ? 
-                    requirements.map((requirement) => (
-                      <div className="overview-text-item" key={requirement.slice(0, 20)}>
-                        {requirement}
-                        </div>
+                 
                     )) : ""}
                     
                   </div>
