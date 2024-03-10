@@ -19,9 +19,7 @@ import UpdateJobs from './components/UpdateJobs';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Front from './components/front';
-import About from './components/About';
-import Blog from './components/Blog';
-import ContactUs from './components/contactus';
+
 
 
 const App = () => {
@@ -36,11 +34,7 @@ const App = () => {
           <Route exact path="/post-jobs" element={<JobPost />}></Route>
           <Route exact path='/my-jobs' element={<MyJobs />}></Route>
           <Route exact path="/employer-home-page" element={<EmployerHomePage />}></Route>
-          <Route exact path="/employee-home-page" element={<EmployeeHomePage />}></Route>
-          <Route exact path="/employee-home-page/profile" element={<UserProfile />}></Route>
-          <Route exact path="/users/:userId/create" element={<CreateProfile />}></Route>
           <Route exact path="employee-home-page/users/:userId/update" element={<CreateProfile />}></Route>
-          <Route exact path="employer-signup" element={<LoginPage currentUserId={currentUserId} setCurrentUserId={setcurrentUserId} isEmployer={true} />}></Route>
           <Route exact path="employee-signup" element={<LoginPage currentUserId={currentUserId} setCurrentUserId={setcurrentUserId} isEmployer={false} />}></Route>
           <Route exact path="jobs/:jobId" element={<JobOverview />}></Route>
           <Route exact path="employee-home-page/my-jobs" element={<JobPosting />}></Route>
@@ -48,11 +42,8 @@ const App = () => {
           <Route exact path="employer-home-page/my-jobs/:jobId" element={<ListApplicants />}></Route>
           <Route exact path="employer-home-page/my-jobs/jobs/:jobId" element={<UpdateJobs />}></Route>
           <Route exact path="employee-home-page/users/:userId" element={<UserProfile/>}></Route>
-          <Route exact path="employee-home-page/blog" element={<Blog />}></Route>
-          <Route exact path="employee-home-page/about" element={<About />}></Route>
-          <Route exact path="employee-home-page/contact" element={<ContactUs />}></Route>
         </Routes>
-        <ToastContainer/>
+        <TostContainer/>
       </AuthProvider>
     </Router>
   );
